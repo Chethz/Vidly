@@ -73,6 +73,7 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
+        [HttpDelete]
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.Include(cust => cust.MembershipType).SingleOrDefault(c => c.Id == id);
@@ -98,5 +99,19 @@ namespace Vidly.Controllers
 
             return View("CustomerForm", viewModel);
         }
+
+       
+        public void DeleteCustomer(int id)
+        {
+            var customerIndb = _context.Customers.FirstOrDefault(c => c.Id == id);
+            if (customerIndb == null)
+            {
+                RedirectToAction("Index", "Customer");
+            }
+
+            _context.Customers.Remove(customerIndb);
+            _context.SaveChanges();
+        }
+
     }
 }
