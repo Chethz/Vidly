@@ -46,7 +46,7 @@ else
             $("#customers .js-delete").on("click", function(){
                 if (confirm("Ae you sure you want to delete this customer")) {
                     $.ajax({
-                        url: "/api/customer/" + $(this).attr("data-customer-id"),
+                        url: "/api/customers/" + $(this).attr("data-customer-id"),
                         method: "DELETE",
                         success: function() {
                             console.log("Success");
