@@ -47,9 +47,8 @@
                     }
                 ]
             });
-            $("#customers .js-delete").on("click",
-                ".js-delete",
-                function() {
+
+            $("#customers").on("click",".js-delete", function() {
                     var button = $(this);
                     bootbox.confirm("Ae you sure you want to delete this customer?",
                         function(result) {
