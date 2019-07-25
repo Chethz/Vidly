@@ -69,8 +69,7 @@ namespace Vidly.Controllers
         // GET: Customer
         public ViewResult Index()
         {
-            var customer = _context.Customers.Include(cust => cust.MembershipType).ToList();
-            return View(customer);
+            return View();
         }
 
         [HttpDelete]
