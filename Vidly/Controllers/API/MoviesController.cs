@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
+using System.Data.Entity;
 using System.Web.Http;
 using AutoMapper;
 using Vidly.DTOs;
@@ -21,7 +21,8 @@ namespace Vidly.Controllers.API
         
         public IEnumerable<MovieDto> GetMovies()
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            return _context.Movies.Include(m=>m.Genre).ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
         }
         
         //GET /api/movie/1
@@ -53,32 +54,36 @@ namespace Vidly.Controllers.API
 
         //PUT /api/movie/1
         [HttpPut]
-        public void UpdateMovie(int id, MovieDto movieDto)
+        public IHttpActionResult UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
 
             if (movieInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             Mapper.Map<MovieDto, Movie>(movieDto, movieInDb);
 
             _context.SaveChanges();
+
+            return Ok();
         }
 
         //DELETE /api/movie/1
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public IHttpActionResult DeleteMovie(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
 
-            if(movieInDb == null)
-            throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (movieInDb == null)
+                return NotFound();
 
             _context.Movies.Remove(movieInDb);
             _context.SaveChanges();
+
+            return Ok();
         }
     }
 

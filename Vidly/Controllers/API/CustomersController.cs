@@ -62,12 +62,12 @@ namespace Vidly.Controllers.API
         public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
 
-            if(customerInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (customerInDb == null)
+                return NotFound();
 
             Mapper.Map<CustomerDto, Customer>(customerDto, customerInDb);
 
