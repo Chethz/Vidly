@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\CustomersController.cs" />
     <Compile Include="Controllers\API\MoviesController.cs" />
+    <Compile Include="Controllers\API\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="DTOs\GenreDto.cs" />
     <Compile Include="DTOs\MembershipTypeDto.cs" />
     <Compile Include="DTOs\MovieDto.cs" />
+    <Compile Include="DTOs\NewRentalDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,6 +261,18 @@
     <Compile Include="Migrations\201908050124402_AddPhoneToApplicationUser.Designer.cs">
       <DependentUpon>201908050124402_AddPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908140210428_AddRentals.cs" />
+    <Compile Include="Migrations\201908140210428_AddRentals.Designer.cs">
+      <DependentUpon>201908140210428_AddRentals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908140236167_AddNumberAvailable.cs" />
+    <Compile Include="Migrations\201908140236167_AddNumberAvailable.Designer.cs">
+      <DependentUpon>201908140236167_AddNumberAvailable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908140238423_AddNumberAvailable1.cs" />
+    <Compile Include="Migrations\201908140238423_AddNumberAvailable1.Designer.cs">
+      <DependentUpon>201908140238423_AddNumberAvailable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -268,6 +282,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -582,6 +597,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908050124402_AddPhoneToApplicationUser.resx">
       <DependentUpon>201908050124402_AddPhoneToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908140210428_AddRentals.resx">
+      <DependentUpon>201908140210428_AddRentals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908140236167_AddNumberAvailable.resx">
+      <DependentUpon>201908140236167_AddNumberAvailable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908140238423_AddNumberAvailable1.resx">
+      <DependentUpon>201908140238423_AddNumberAvailable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
